@@ -1,36 +1,37 @@
 package com.baeldung.spring.statemachine;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.statemachine.StateMachine;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.statemachine.StateMachine;
-
-import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.annotation.Resource;
-
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = SimpleStateMachineConfiguration.class)
+@TestMethodOrder(OrderAnnotation.class) 
 public class StateMachineIntegrationTest {
 
     @Autowired
     private StateMachine<String, String> stateMachine;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         stateMachine.start();
     }
 
     @Test
+    @Order(1)  
     public void whenSimpleStringStateMachineEvents_thenEndState() {
         assertEquals("SI", stateMachine.getState().getId());
 
@@ -42,7 +43,8 @@ public class StateMachineIntegrationTest {
     }
 
     @Test
-    public void whenSimpleStringMachineActionState_thenActionExecuted() throws InterruptedException {
+    @Order(2) 
+    public void whenSimpleStringMachineActionState_thenActionExecuted() {
 
         stateMachine.sendEvent("E3");
         assertEquals("S3", stateMachine.getState().getId());
@@ -61,7 +63,7 @@ public class StateMachineIntegrationTest {
         assertEquals(2, stateMachine.getExtendedState().getVariables().get("approvalCount"));
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         stateMachine.stop();
     }

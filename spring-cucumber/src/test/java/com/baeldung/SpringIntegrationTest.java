@@ -4,17 +4,18 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = SpringDemoApplication.class)
-@WebAppConfiguration
+@CucumberContextConfiguration
+@SpringBootTest(classes = SpringDemoApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class SpringIntegrationTest {
     static ResponseResults latestResponse = null;
 

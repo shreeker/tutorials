@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
 @SpringBootApplication
 public class MicrometerApp {
 
@@ -13,7 +14,7 @@ public class MicrometerApp {
         return new JvmThreadMetrics();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(MicrometerApp.class, args);
     }
 

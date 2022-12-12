@@ -1,84 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- Spring IO Platform is the parent of the generated application to be able to
-      use Spring Boot and all its default configuration -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Spring IO Platform is the parent of the generated application to be able to use Spring Boot -->
+    <!-- and all its default configuration -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>spring-roo</artifactId>
+    <version>1.0.0.BUILD-SNAPSHOT</version>
+    <name>spring-roo</name>
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>
         <version>Athens-RELEASE</version>
-        <relativePath/>
+        <relativePath />
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
-    <artifactId>roo</artifactId>
-    <version>1.0.0.BUILD-SNAPSHOT</version>
-    <name>roo</name>
-
-    <packaging>jar</packaging>
-
-    <properties>
-        <roo.version>2.0.0.RC1</roo.version>
-        <java.product.version>8</java.product.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <aspectj.plugin.version>1.8</aspectj.plugin.version>
-        <asciidoclet.version>1.5.4</asciidoclet.version>
-        <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
-        <java.version>1.8</java.version>
-        <springlets.version>1.2.0.RC1</springlets.version>
-        <tracee.version>1.1.2</tracee.version>
-        <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
-        <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
-        <thymeleaf-data-dialect.version>2.0.1</thymeleaf-data-dialect.version>
-        <dynamicjasper.version>5.0.11</dynamicjasper.version>
-        <dynamicjasper-fonts.version>1.0</dynamicjasper-fonts.version>
-        <bootstrap.version>3.3.6</bootstrap.version>
-        <datatables.version>1.10.12</datatables.version>
-        <datatables-bs.version>1.10.11</datatables-bs.version>
-        <datatables-buttons.version>1.1.2</datatables-buttons.version>
-        <datatables-buttons-bs.version>1.1.2</datatables-buttons-bs.version>
-        <datatables-responsive.version>2.0.2</datatables-responsive.version>
-        <datatables-responsive-bs.version>2.0.2</datatables-responsive-bs.version>
-        <datatables-select.version>1.1.2</datatables-select.version>
-        <datatables-select-bs.version>1.1.2</datatables-select-bs.version>
-        <datatables-checkboxes.version>1.1.2</datatables-checkboxes.version>
-        <datatables-mark.version>2.0.0</datatables-mark.version>
-        <datetimepicker.version>2.5.4</datetimepicker.version>
-        <fontawesome.version>4.6.2</fontawesome.version>
-        <jquery.version>1.12.3</jquery.version>
-        <jquery-inputmask.version>3.3.1</jquery-inputmask.version>
-        <jquery-validation.version>1.15.0</jquery-validation.version>
-        <momentjs.version>2.13.0</momentjs.version>
-        <select2.version>4.0.3</select2.version>
-        <select2-bootstrap-theme.version>0.1.0-beta.7</select2-bootstrap-theme.version>
-        <respond.version>1.4.2</respond.version>
-        <html5shiv.version>3.7.3</html5shiv.version>
-        <bootstrap.ie10-viewport-bug-workaround.version>1.0.3</bootstrap.ie10-viewport-bug-workaround.version>
-    </properties>
-
-    <repositories>
-        <!-- Maven Snapshots Repository -->
-        <repository>
-            <id>maven-snapshot-repository</id>
-            <name>Maven Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <!-- Spring Roo repository -->
-        <repository>
-            <id>spring-roo-repository</id>
-            <name>Spring Roo Repository</name>
-            <url>http://repo.spring.io/spring-roo</url>
-        </repository>
-    </repositories>
 
     <dependencyManagement>
         <dependencies>
-
             <!-- Spring Roo annotations -->
             <dependency>
                 <groupId>org.springframework.roo</groupId>
@@ -87,7 +28,6 @@
                 <type>pom</type>
                 <scope>provided</scope>
             </dependency>
-
             <dependency>
                 <groupId>io.springlets</groupId>
                 <artifactId>springlets-data-jpa</artifactId>
@@ -106,7 +46,7 @@
             <dependency>
                 <groupId>org.springframework.roo</groupId>
                 <artifactId>org.springframework.roo.querydsl.processor</artifactId>
-                <version>2.0.0.RELEASE</version>
+                <version>${querydsl-processor.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.tracee.binding</groupId>
@@ -273,40 +213,33 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
         <!-- Spring Roo annotations -->
         <dependency>
             <groupId>org.springframework.roo</groupId>
             <artifactId>org.springframework.roo.annotations</artifactId>
             <type>pom</type>
         </dependency>
-
         <!-- AspectJ dependencies -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
         </dependency>
-
         <!-- Common Dependencies -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-
         <!-- Test utils dependencies -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
         </dependency>
-
         <!-- Dependencies added by Spring Roo -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -481,10 +414,14 @@
             <groupId>org.webjars.bower</groupId>
             <artifactId>ie10-viewport-bug-workaround</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.olap4j</groupId>
+            <artifactId>olap4j</artifactId>
+            <version>${olap4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -558,7 +495,8 @@
                             "projectName=${project.name}"
                             --attribute
                             "projectVersion=${project.version}"
-                            --attribute "doctype=book"
+                            --attribute
+                            "doctype=book"
                         </additionalparam>
                         <dependencySourceIncludes>
                             <dependencySourceInclude>${project.groupId}:*</dependencySourceInclude>
@@ -613,7 +551,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -641,5 +578,54 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <!-- Spring Roo repository -->
+        <repository>
+            <id>spring-roo-repository</id>
+            <name>Spring Roo Repository</name>
+            <url>https://repo.spring.io/spring-roo</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <roo.version>2.0.0.RELEASE</roo.version>
+        <java.product.version>8</java.product.version>
+        <aspectj.plugin.version>1.8</aspectj.plugin.version>
+        <asciidoclet.version>1.5.4</asciidoclet.version>
+        <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <springlets.version>1.2.0.RELEASE</springlets.version>
+        <tracee.version>1.1.2</tracee.version>
+        <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
+        <thymeleaf-data-dialect.version>2.0.1</thymeleaf-data-dialect.version>
+        <dynamicjasper.version>5.3.2</dynamicjasper.version>
+        <dynamicjasper-fonts.version>1.0</dynamicjasper-fonts.version>
+        <bootstrap.version>3.3.6</bootstrap.version>
+        <datatables.version>1.10.12</datatables.version>
+        <datatables-bs.version>1.10.11</datatables-bs.version>
+        <datatables-buttons.version>1.1.2</datatables-buttons.version>
+        <datatables-buttons-bs.version>1.1.2</datatables-buttons-bs.version>
+        <datatables-responsive.version>2.0.2</datatables-responsive.version>
+        <datatables-responsive-bs.version>2.0.2</datatables-responsive-bs.version>
+        <datatables-select.version>1.1.2</datatables-select.version>
+        <datatables-select-bs.version>1.1.2</datatables-select-bs.version>
+        <datatables-checkboxes.version>1.1.2</datatables-checkboxes.version>
+        <datatables-mark.version>2.0.0</datatables-mark.version>
+        <datetimepicker.version>2.5.4</datetimepicker.version>
+        <fontawesome.version>4.6.2</fontawesome.version>
+        <jquery.version>1.12.3</jquery.version>
+        <jquery-inputmask.version>3.3.1</jquery-inputmask.version>
+        <jquery-validation.version>1.15.0</jquery-validation.version>
+        <momentjs.version>2.13.0</momentjs.version>
+        <select2.version>4.0.3</select2.version>
+        <select2-bootstrap-theme.version>0.1.0-beta.7</select2-bootstrap-theme.version>
+        <respond.version>1.4.2</respond.version>
+        <html5shiv.version>3.7.3</html5shiv.version>
+        <bootstrap.ie10-viewport-bug-workaround.version>1.0.3</bootstrap.ie10-viewport-bug-workaround.version>
+        <querydsl-processor.version>2.0.0.RELEASE</querydsl-processor.version>
+        <olap4j.version>1.2.0</olap4j.version>
+        <log4j2.version>2.17.1</log4j2.version>
+    </properties>
 
 </project>
